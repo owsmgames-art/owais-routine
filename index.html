@@ -12,7 +12,6 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height:100vh;padding-bottom:80px;}
 
-/* PIN */
 #pin-screen{position:fixed;inset:0;background:#080810;z-index:101;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .p-icon{font-size:44px;margin-bottom:12px;}
 .p-title{font-size:22px;font-weight:800;}
@@ -25,7 +24,6 @@ body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height
 .p-btn{height:64px;border-radius:16px;background:#111118;border:1px solid #ffffff10;color:#f0f0ff;font-size:22px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;}
 .p-btn:active{background:#1a1a2e;transform:scale(.95);}
 
-/* WEIGHT MODAL */
 #weight-modal{position:fixed;inset:0;background:#080810ee;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
 .wm-card{background:#111118;border:1px solid #ffffff10;border-radius:24px;padding:28px 24px;width:100%;max-width:340px;text-align:center;}
 .wm-icon{font-size:40px;margin-bottom:12px;}
@@ -35,17 +33,22 @@ body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height
 .wm-input{width:100%;background:#0d0d1a;border:1px solid #ffffff15;border-radius:14px;padding:16px;color:#f0f0ff;font-size:28px;font-weight:700;font-family:'Outfit',sans-serif;outline:none;text-align:center;}
 .wm-input:focus{border-color:#f97316;}
 .wm-unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:14px;color:#555;font-weight:700;}
-.wm-btn{width:100%;background:#f97316;border:none;border-radius:14px;padding:14px;color:#080810;font-size:16px;font-weight:800;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;}
-.wm-btn:active{transform:scale(.98);}
+.wm-btn{width:100%;background:#f97316;border:none;border-radius:14px;padding:14px;color:#080810;font-size:16px;font-weight:800;cursor:pointer;font-family:'Outfit',sans-serif;}
 .wm-skip{margin-top:12px;font-size:13px;color:#333;cursor:pointer;text-decoration:underline;}
-.wm-skip:hover{color:#555;}
 
-/* LOADING */
 #db-loading{position:fixed;inset:0;background:#080810;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font-size:14px;color:#f97316;}
 .spinner{width:32px;height:32px;border:3px solid #1a1a2e;border-top-color:#f97316;border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* APP */
+/* ALL DONE OVERLAY */
+#done-overlay{position:fixed;inset:0;background:#080810;z-index:300;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;}
+.do-icon{font-size:72px;margin-bottom:20px;animation:bounce 1s ease infinite alternate;}
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+.do-title{font-size:28px;font-weight:800;color:#34d399;letter-spacing:-0.5px;}
+.do-sub{font-size:15px;color:#555;margin-top:10px;line-height:1.7;}
+.do-date{font-size:13px;color:#f97316;margin-top:20px;font-weight:700;}
+.do-btn{margin-top:28px;background:#1a1a2e;border:1px solid #ffffff10;border-radius:14px;padding:12px 24px;color:#888;font-size:14px;cursor:pointer;font-family:'Outfit',sans-serif;}
+
 #app{display:none;}
 .blob1{position:fixed;top:-120px;right:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,.08) 0%,transparent 70%);pointer-events:none;z-index:0;}
 .blob2{position:fixed;bottom:-100px;left:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.08) 0%,transparent 70%);pointer-events:none;z-index:0;}
@@ -70,38 +73,33 @@ body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height
 .quote-box{flex:1;padding:10px 14px;background:#ffffff06;border-radius:10px;border-left:3px solid #f97316;font-size:12px;color:#888;font-style:italic;}
 .sync-dot{font-size:10px;font-weight:700;flex-shrink:0;}
 
-/* WEIGHT CARD */
 .weight-card{margin:16px 20px 0;background:#111118;border-radius:20px;padding:18px;border:1px solid #ffffff08;position:relative;overflow:hidden;}
 .weight-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#f9731608,transparent 60%);pointer-events:none;}
 .wc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
 .wc-label{font-size:11px;letter-spacing:2px;color:#f97316;text-transform:uppercase;font-weight:700;}
-.wc-edit{font-size:11px;color:#333;cursor:pointer;text-decoration:underline;}
-.wc-edit:hover{color:#555;}
+.wc-edit{font-size:11px;color:#444;cursor:pointer;text-decoration:underline;}
 .wc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
 .wc-stat{text-align:center;}
 .wc-stat-val{font-size:20px;font-weight:800;}
 .wc-stat-lbl{font-size:10px;color:#555;margin-top:2px;}
-.wc-progress-wrap{margin-bottom:6px;}
 .wc-progress-row{display:flex;justify-content:space-between;margin-bottom:5px;}
 .wc-progress-lbl{font-size:11px;color:#888;}
 .wc-progress-pct{font-size:11px;font-weight:700;color:#34d399;}
 .wc-bar-bg{background:#1a1a2e;border-radius:99px;height:6px;overflow:hidden;}
 .wc-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#f97316,#34d399);transition:width .6s cubic-bezier(.34,1.56,.64,1);}
 .chart-wrap{margin-top:14px;overflow-x:auto;}
-.chart-inner{min-width:100%;display:flex;align-items:flex-end;gap:4px;height:60px;padding-bottom:2px;}
-.chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:28px;}
-.chart-bar{width:100%;border-radius:4px 4px 0 0;transition:height .4s ease;background:linear-gradient(180deg,#f97316,#f9731660);min-height:3px;}
-.chart-bar.today{background:linear-gradient(180deg,#34d399,#34d39960);}
+.chart-inner{display:flex;align-items:flex-end;gap:4px;height:70px;padding-bottom:2px;min-width:100%;}
+.chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:30px;}
+.chart-bar{width:100%;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#f97316,#f9731650);min-height:3px;}
+.chart-bar.today{background:linear-gradient(180deg,#34d399,#34d39950);}
 .chart-lbl{font-size:8px;color:#333;text-align:center;white-space:nowrap;}
-.chart-wt{font-size:8px;color:#666;text-align:center;}
+.chart-wt{font-size:8px;color:#555;text-align:center;}
 
-/* TABS */
 .tabs{display:flex;padding:16px 20px 0;gap:8px;}
 .tab{border:none;border-radius:99px;padding:7px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;}
 .tab.on{background:#f97316;color:#080810;}
 .tab.off{background:#1a1a2e;color:#555;}
 
-/* ROUTINE LIST */
 .list{padding:16px 20px;}
 .item{display:flex;align-items:center;gap:14px;border-radius:16px;padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:all .25s;user-select:none;border:1px solid #ffffff08;background:#111118;}
 .item.done{border-color:var(--c);background:color-mix(in srgb,var(--c) 8%,transparent);box-shadow:0 0 20px color-mix(in srgb,var(--c) 10%,transparent);}
@@ -118,16 +116,12 @@ body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height
 .item-sub{font-size:11px;color:#444;margin-top:2px;}
 .item-sub.red{color:#ff4444;}
 .dl-badge{font-size:10px;font-weight:700;border-radius:6px;padding:3px 7px;flex-shrink:0;}
-.all-done-card{text-align:center;padding:24px;background:linear-gradient(135deg,#34d39915,#38bdf815);border:1px solid #34d39930;border-radius:16px;margin-top:4px;}
-.ad-title{font-size:18px;font-weight:800;color:#34d399;margin-top:8px;}
-.ad-sub{font-size:13px;color:#555;margin-top:4px;}
 
-/* HISTORY */
 .hist-card{background:#111118;border-radius:14px;padding:14px 16px;margin-bottom:10px;border:1px solid #ffffff08;}
 .hist-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .hist-date{font-weight:700;font-size:14px;}
 .hist-badge{font-size:12px;font-weight:700;border-radius:8px;padding:3px 10px;}
-.hist-weight{font-size:11px;color:#f97316;margin-top:4px;}
+.hist-weight{font-size:11px;color:#f97316;margin-top:3px;}
 .hist-emojis{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
 .mini-bg{margin-top:10px;background:#1a1a2e;border-radius:99px;height:4px;}
 .mini-fill{height:100%;border-radius:99px;}
@@ -168,7 +162,7 @@ body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height
   <div class="wm-card">
     <div class="wm-icon">⚖️</div>
     <div class="wm-title" id="wm-title">Good morning, Owais!</div>
-    <div class="wm-sub" id="wm-sub">What's your weight today?<br/>Log it to track your progress.</div>
+    <div class="wm-sub">What's your weight today?<br/>Log it to track your progress.</div>
     <div class="wm-input-wrap">
       <input class="wm-input" id="wm-input" type="number" step="0.1" min="50" max="200" placeholder="85.5"/>
       <span class="wm-unit">kg</span>
@@ -178,8 +172,17 @@ body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height
   </div>
 </div>
 
+<!-- ALL DONE OVERLAY -->
+<div id="done-overlay">
+  <div class="do-icon">🏆</div>
+  <div class="do-title">Today's Tasks Completed!</div>
+  <div class="do-sub">Every single goal crushed today.<br/>Your progress is saved. Come back tomorrow!</div>
+  <div class="do-date" id="do-date"></div>
+  <button class="do-btn" onclick="document.getElementById('done-overlay').style.display='none'">View today's summary</button>
+</div>
+
 <!-- LOADING -->
-<div id="db-loading"><div class="spinner"></div>Syncing with Supabase...</div>
+<div id="db-loading"><div class="spinner"></div>Loading your progress...</div>
 
 <!-- APP -->
 <div id="app">
@@ -210,19 +213,18 @@ body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height
       </div>
       <div class="quote-row">
         <div class="quote-box" id="quote"></div>
-        <div class="sync-dot" id="sync-dot" style="color:#34d399">✓ Synced</div>
+        <div class="sync-dot" id="sync-dot" style="color:#34d399">✓ Saved</div>
       </div>
     </div>
 
-    <!-- WEIGHT CARD -->
-    <div class="weight-card" id="weight-card">
+    <div class="weight-card">
       <div class="wc-top">
         <div class="wc-label">⚖️ Weight Progress</div>
-        <div class="wc-edit" onclick="openWeightModal()">Log today's weight</div>
+        <div class="wc-edit" id="wc-edit-btn" onclick="openWeightModal()">Log today's weight</div>
       </div>
       <div class="wc-stats">
         <div class="wc-stat">
-          <div class="wc-stat-val" id="wc-start">85.5</div>
+          <div class="wc-stat-val">85.5</div>
           <div class="wc-stat-lbl">Start (kg)</div>
         </div>
         <div class="wc-stat">
@@ -230,20 +232,16 @@ body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height
           <div class="wc-stat-lbl">Current (kg)</div>
         </div>
         <div class="wc-stat">
-          <div class="wc-stat-val" id="wc-lost" style="color:#34d399">—</div>
+          <div class="wc-stat-val" id="wc-lost" style="color:#34d399">0.0</div>
           <div class="wc-stat-lbl">Lost (kg)</div>
         </div>
       </div>
-      <div class="wc-progress-wrap">
-        <div class="wc-progress-row">
-          <span class="wc-progress-lbl">Journey to 75kg</span>
-          <span class="wc-progress-pct" id="wc-pct">0%</span>
-        </div>
-        <div class="wc-bar-bg"><div class="wc-bar-fill" id="wc-bar" style="width:0%"></div></div>
+      <div class="wc-progress-row">
+        <span class="wc-progress-lbl">Journey to 75kg</span>
+        <span class="wc-progress-pct" id="wc-pct">0%</span>
       </div>
-      <div class="chart-wrap">
-        <div class="chart-inner" id="wc-chart"></div>
-      </div>
+      <div class="wc-bar-bg"><div class="wc-bar-fill" id="wc-bar" style="width:0%"></div></div>
+      <div class="chart-wrap"><div class="chart-inner" id="wc-chart"></div></div>
     </div>
 
     <div class="tabs">
@@ -257,9 +255,9 @@ body{background:#080810;color:#f0f0ff;font-family:'Outfit',sans-serif;min-height
 
 <script>
 // ═══════════════════════════════════════
-const PIN       = "1234"; // ← Change your PIN here
-const SB_URL    = "https://jrcrtiilizfqfaqoljko.supabase.co";
-const SB_KEY    = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpyY3J0aWlsaXpmcWZhcW9samtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2NDk0ODksImV4cCI6MjA5MjIyNTQ4OX0.Ib1fof9WDl50zUs9sGgvjHy_uh0xMEx4KfGAPsko70M";
+const PIN          = "1234";
+const SB_URL       = "https://jrcrtiilizfqfaqoljko.supabase.co";
+const SB_KEY       = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpyY3J0aWlsaXpmcWZhcW9samtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2NDk0ODksImV4cCI6MjA5MjIyNTQ4OX0.Ib1fof9WDl50zUs9sGgvjHy_uh0xMEx4KfGAPsko70M";
 const START_WEIGHT = 85.5;
 const GOAL_WEIGHT  = 75.0;
 // ═══════════════════════════════════════
@@ -282,71 +280,90 @@ const QUOTES = [
   "No shortcuts. Just consistency. 💪",
 ];
 
-let allData = {};
-let currentTab = "today";
-let pinEntry = "";
-let pollTimer = null;
+// ── State ──
+// allData is the single source of truth, always kept in memory + Supabase
+// We NEVER overwrite allData from a poll if a save is in flight
+let allData      = {};
+let currentTab   = "today";
+let pinEntry     = "";
+let isSaving     = false;   // true while a push is in progress
+let dirtyDays    = new Set(); // days that need pushing
+let saveTimer    = null;
+let allDoneShown = false;   // only show the overlay once per session
 
 function todayKey(){
   const d=new Date();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 }
-
 function deadlinePassed(dl){
   if(!dl) return false;
   const n=new Date(),[h,m]=dl.split(":").map(Number);
   return n.getHours()>h||(n.getHours()===h&&n.getMinutes()>=m);
 }
-
-function setSyncDot(txt,color){
-  const el=document.getElementById("sync-dot");
-  if(el){el.textContent=txt;el.style.color=color;}
-}
+function syncDot(txt,color){ const e=document.getElementById("sync-dot"); if(e){e.textContent=txt;e.style.color=color;} }
 
 // ── Supabase ──
-async function sbFetch(path, method="GET", body=null){
-  const opts={method,headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json","Prefer":"return=representation"}};
-  if(body) opts.body=JSON.stringify(body);
-  const r=await fetch(SB_URL+"/rest/v1/"+path,opts);
+async function sbUpsert(day, data){
+  const r=await fetch(`${SB_URL}/rest/v1/routine`,{
+    method:"POST",
+    headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json","Prefer":"resolution=merge-duplicates,return=minimal"},
+    body:JSON.stringify({day,data})
+  });
   if(!r.ok) throw new Error(await r.text());
-  const txt=await r.text();
-  return txt?JSON.parse(txt):[];
 }
 
-async function loadAll(){
-  const rows=await sbFetch("routine?select=day,data");
+async function sbLoadAll(){
+  const r=await fetch(`${SB_URL}/rest/v1/routine?select=day,data`,{
+    headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY}
+  });
+  if(!r.ok) throw new Error(await r.text());
+  const rows=await r.json();
   const obj={};
-  rows.forEach(r=>{obj[r.day]=r.data;});
+  rows.forEach(row=>{ obj[row.day]=row.data; });
   return obj;
 }
 
-async function pushDay(day){
-  setSyncDot("↑ Saving...","#facc15");
-  try{
-    await sbFetch("routine","POST",{day,data:allData[day]||{}});
-    setSyncDot("✓ Synced","#34d399");
-  } catch(e){
-    setSyncDot("⚠️ Offline","#fb7185");
-  }
+// ── Save queue: debounced, never clobbers in-flight saves ──
+function scheduleSave(day){
+  dirtyDays.add(day);
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(flushSaves, 600); // wait 600ms after last tap
 }
 
-async function startSync(){
-  document.getElementById("db-loading").style.display="flex";
+async function flushSaves(){
+  if(isSaving || dirtyDays.size===0) return;
+  isSaving=true;
+  syncDot("↑ Saving...","#facc15");
+  const days=[...dirtyDays];
+  dirtyDays.clear();
   try{
-    allData=await loadAll();
-    document.getElementById("db-loading").style.display="none";
-    setSyncDot("✓ Synced","#34d399");
-    checkWeightPrompt();
-    render();
+    await Promise.all(days.map(d=>sbUpsert(d,allData[d]||{})));
+    syncDot("✓ Saved","#34d399");
   } catch(e){
-    document.getElementById("db-loading").style.display="none";
-    setSyncDot("⚠️ Error","#fb7185");
-    render();
+    // put dirty days back so we retry
+    days.forEach(d=>dirtyDays.add(d));
+    syncDot("⚠️ Retrying...","#fb7185");
+    saveTimer=setTimeout(flushSaves,3000);
   }
-  if(pollTimer) clearInterval(pollTimer);
-  pollTimer=setInterval(async()=>{
-    try{allData=await loadAll();setSyncDot("✓ Synced","#34d399");render();}catch{}
-  },30000);
+  isSaving=false;
+  // if more dirty days accumulated during save, flush again
+  if(dirtyDays.size>0) setTimeout(flushSaves,600);
+}
+
+// ── Background refresh (read-only, never overwrites dirty days) ──
+async function bgRefresh(){
+  if(isSaving || dirtyDays.size>0) return; // don't touch data while saving
+  try{
+    const remote=await sbLoadAll();
+    const tk=todayKey();
+    // Merge: remote wins for days we haven't touched; local wins for today if we have pending
+    Object.entries(remote).forEach(([day,data])=>{
+      if(!dirtyDays.has(day)){
+        allData[day]=data;
+      }
+    });
+    render();
+  } catch(e){ /* silent */ }
 }
 
 // ── PIN ──
@@ -358,8 +375,7 @@ window.pp=function(v){
   if(pinEntry.length===4){
     if(pinEntry===PIN){
       document.getElementById("pin-screen").style.display="none";
-      document.getElementById("app").style.display="block";
-      startSync();
+      boot();
     } else {
       document.getElementById("p-err").textContent="Wrong PIN. Try again.";
       pinEntry="";
@@ -368,62 +384,75 @@ window.pp=function(v){
   }
 };
 
+// ── Boot (after PIN) ──
+async function boot(){
+  document.getElementById("db-loading").style.display="flex";
+  try{
+    allData=await sbLoadAll();
+  } catch(e){ /* start with empty, will retry on save */ }
+  document.getElementById("db-loading").style.display="none";
+  document.getElementById("app").style.display="block";
+  syncDot("✓ Saved","#34d399");
+  checkWeightPrompt();
+  render();
+  // bg refresh every 2 minutes
+  setInterval(bgRefresh, 120000);
+}
+
 // ── Weight ──
 function checkWeightPrompt(){
   const tk=todayKey();
   const todayData=allData[tk]||{};
-  // Show modal if no weight logged today and not skipped today
-  const skippedKey="skip_weight_"+tk;
-  if(todayData.weight===undefined && !sessionStorage.getItem(skippedKey)){
+  if(todayData.weight===undefined && !sessionStorage.getItem("skip_wt_"+tk)){
     openWeightModal();
   }
 }
-
 window.openWeightModal=function(){
-  const tk=todayKey();
-  const existing=(allData[tk]||{}).weight;
-  const modal=document.getElementById("weight-modal");
-  const input=document.getElementById("wm-input");
-  if(existing) input.value=existing;
-  else input.value="";
-
-  // Personalise greeting by time
   const h=new Date().getHours();
-  const greet=h<12?"Good morning":"h<17"?"Good afternoon":"Good evening";
-  document.getElementById("wm-title").textContent=(h<12?"Good morning, Owais!":h<17?"Good afternoon, Owais!":"Good evening, Owais!");
-  modal.style.display="flex";
-  setTimeout(()=>input.focus(),300);
+  document.getElementById("wm-title").textContent=h<12?"Good morning, Owais!":h<17?"Good afternoon, Owais!":"Good evening, Owais!";
+  const existing=(allData[todayKey()]||{}).weight;
+  document.getElementById("wm-input").value=existing||"";
+  document.getElementById("weight-modal").style.display="flex";
 };
-
 window.saveWeight=function(){
   const val=parseFloat(document.getElementById("wm-input").value);
-  if(!val||val<30||val>300){
-    document.getElementById("wm-input").style.borderColor="#fb7185";
-    setTimeout(()=>document.getElementById("wm-input").style.borderColor="#ffffff15",1000);
-    return;
-  }
+  if(!val||val<30||val>300){ document.getElementById("wm-input").style.borderColor="#fb7185"; setTimeout(()=>document.getElementById("wm-input").style.borderColor="#ffffff15",1000); return; }
   const tk=todayKey();
   if(!allData[tk]) allData[tk]={};
   allData[tk].weight=val;
-  pushDay(tk);
+  scheduleSave(tk);
   document.getElementById("weight-modal").style.display="none";
   render();
 };
-
 window.skipWeight=function(){
-  sessionStorage.setItem("skip_weight_"+todayKey(),"1");
+  sessionStorage.setItem("skip_wt_"+todayKey(),"1");
   document.getElementById("weight-modal").style.display="none";
 };
 
-// ── Toggle routine ──
+// ── Toggle routine item ──
 window.toggle=function(id){
-  const tk=todayKey(), ch=allData[tk]||{};
-  allData[tk]={...ch,[id]:!ch[id]};
-  pushDay(tk);
+  const tk=todayKey();
+  if(!allData[tk]) allData[tk]={};
+  allData[tk][id]=!allData[tk][id];
+  scheduleSave(tk); // save immediately, debounced
   render();
   const el=document.getElementById("item-"+id);
   if(el){el.classList.add("pop");setTimeout(()=>el.classList.remove("pop"),300);}
+  // Check if all done
+  const ch=allData[tk];
+  const allDone=ROUTINES.every(r=>ch[r.id]);
+  if(allDone && !allDoneShown){
+    allDoneShown=true;
+    setTimeout(showAllDone, 400);
+  }
 };
+
+function showAllDone(){
+  const overlay=document.getElementById("done-overlay");
+  const dateEl=document.getElementById("do-date");
+  dateEl.textContent=new Date().toLocaleDateString("en-IN",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  overlay.style.display="flex";
+}
 
 // ── Render ──
 function render(){
@@ -437,16 +466,13 @@ function updateHeader(){
   const now=new Date();
   const dt=document.getElementById("datetime");
   if(dt) dt.textContent=now.toLocaleDateString("en-IN",{weekday:"long",day:"numeric",month:"long"})+" · "+now.toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit",hour12:true});
-
   const tk=todayKey(), ch=allData[tk]||{};
   const done=ROUTINES.filter(r=>ch[r.id]).length, total=ROUTINES.length;
   const pct=Math.round((done/total)*100), allDone=done===total;
-
   const pv=document.getElementById("prog-val");
-  if(pv){pv.textContent=`${done}/${total}${allDone?" 🎉 All done!":""}`;pv.style.color=allDone?"#34d399":"#f0f0ff";}
+  if(pv){pv.textContent=`${done}/${total}${allDone?" 🎉":""}`;pv.style.color=allDone?"#34d399":"#f0f0ff";}
   const bar=document.getElementById("prog-bar");
   if(bar){bar.style.width=pct+"%";bar.style.background=allDone?"linear-gradient(90deg,#34d399,#38bdf8)":"linear-gradient(90deg,#f97316,#facc15)";}
-
   let s=0,d=new Date();d.setDate(d.getDate()-1);
   for(let i=0;i<60;i++){
     const k=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
@@ -459,61 +485,40 @@ function updateHeader(){
 }
 
 function updateWeightCard(){
-  // Gather all weight entries sorted by date
-  const entries=Object.entries(allData)
-    .filter(([,d])=>d.weight!==undefined)
-    .sort(([a],[b])=>a.localeCompare(b));
-
+  const entries=Object.entries(allData).filter(([,d])=>d&&d.weight!==undefined).sort(([a],[b])=>a.localeCompare(b));
   const tk=todayKey();
   const todayW=(allData[tk]||{}).weight;
-  const latestEntry=entries[entries.length-1];
-  const currentW=latestEntry?latestEntry[1].weight:null;
-
-  const totalToLose=START_WEIGHT-GOAL_WEIGHT; // 10.5
-  const lost=currentW?Math.max(0,START_WEIGHT-currentW):0;
+  const latest=entries[entries.length-1];
+  const currentW=latest?latest[1].weight:null;
+  const lost=currentW?Math.max(0,+(START_WEIGHT-currentW).toFixed(1)):0;
+  const totalToLose=START_WEIGHT-GOAL_WEIGHT;
   const pct=Math.min(100,Math.round((lost/totalToLose)*100));
-
-  document.getElementById("wc-current").textContent=currentW?currentW.toFixed(1)+"kg":"—";
-  document.getElementById("wc-lost").textContent=lost>0?"-"+lost.toFixed(1):"0.0";
-  document.getElementById("wc-pct").textContent=pct+"%";
-  document.getElementById("wc-bar").style.width=pct+"%";
-
-  // Edit label
-  const editEl=document.querySelector(".wc-edit");
-  if(editEl) editEl.textContent=todayW?"Edit today's weight":"Log today's weight";
-
-  // Chart — last 14 days with weight entries
-  const chartEntries=entries.slice(-14);
-  if(chartEntries.length===0){
-    document.getElementById("wc-chart").innerHTML=`<div style="font-size:12px;color:#333;width:100%;text-align:center;padding:16px 0">Log your weight daily to see your chart 📈</div>`;
+  const ce=document.getElementById("wc-current"); if(ce) ce.textContent=currentW?currentW.toFixed(1)+"kg":"—";
+  const le=document.getElementById("wc-lost"); if(le) le.textContent=lost>0?"-"+lost.toFixed(1):"0.0";
+  const pe=document.getElementById("wc-pct"); if(pe) pe.textContent=pct+"%";
+  const be=document.getElementById("wc-bar"); if(be) be.style.width=pct+"%";
+  const eb=document.getElementById("wc-edit-btn"); if(eb) eb.textContent=todayW?"Edit today's weight":"Log today's weight";
+  const last14=entries.slice(-14);
+  if(!last14.length){
+    const ci=document.getElementById("wc-chart"); if(ci) ci.innerHTML=`<div style="font-size:12px;color:#2a2a2a;width:100%;text-align:center;padding:16px 0">Log your weight daily to see your chart 📈</div>`;
     return;
   }
-
-  const weights=chartEntries.map(([,d])=>d.weight);
-  const minW=Math.min(...weights)-0.5;
-  const maxW=Math.max(...weights)+0.5;
-  const range=maxW-minW||1;
-
-  const html=chartEntries.map(([key,d])=>{
-    const w=d.weight;
-    const heightPct=Math.round(((w-minW)/range)*100);
-    const barH=Math.max(4,Math.round((heightPct/100)*52));
-    const dayLbl=new Date(key+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short"});
-    const isToday=key===tk;
-    return `<div class="chart-bar-wrap">
-      <div class="chart-wt">${w.toFixed(1)}</div>
-      <div class="chart-bar${isToday?" today":""}" style="height:${barH}px"></div>
-      <div class="chart-lbl">${dayLbl}</div>
-    </div>`;
+  const ws=last14.map(([,d])=>d.weight);
+  const minW=Math.min(...ws)-0.5, maxW=Math.max(...ws)+0.5, range=maxW-minW||1;
+  const ci=document.getElementById("wc-chart");
+  if(ci) ci.innerHTML=last14.map(([key,d])=>{
+    const w=d.weight, h=Math.max(4,Math.round(((w-minW)/range)*56));
+    const lbl=new Date(key+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short"});
+    return `<div class="chart-bar-wrap"><div class="chart-wt">${w.toFixed(1)}</div><div class="chart-bar${key===tk?" today":""}" style="height:${h}px"></div><div class="chart-lbl">${lbl}</div></div>`;
   }).join("");
-  document.getElementById("wc-chart").innerHTML=html;
 }
 
 function renderToday(){
   const tk=todayKey(), ch=allData[tk]||{};
-  const allDone=ROUTINES.filter(r=>ch[r.id]).length===ROUTINES.length;
-  let html=ROUTINES.map(r=>{
-    const done=!!ch[r.id],ov=r.deadline&&deadlinePassed(r.deadline)&&!done;
+  const el=document.getElementById("view-today");
+  if(!el) return;
+  el.innerHTML=ROUTINES.map(r=>{
+    const done=!!ch[r.id], ov=r.deadline&&deadlinePassed(r.deadline)&&!done;
     return `<div class="item${done?" done":""}${ov?" overdue":""}" id="item-${r.id}" style="--c:${r.color}" onclick="toggle('${r.id}')">
       <div class="chk${done?" on":""}" style="--c:${r.color}">${done?"✓":""}</div>
       <div class="r-emoji">${r.emoji}</div>
@@ -524,25 +529,20 @@ function renderToday(){
       ${r.deadline?`<div class="dl-badge" style="color:${done?"#555":ov?"#ff4444":r.color};background:${done?"#ffffff08":ov?"#ff444415":r.color+"15"};border:1px solid ${done?"#ffffff10":ov?"#ff444430":r.color+"40"}">by ${r.deadline==="14:00"?"2pm":"10pm"}</div>`:""}
     </div>`;
   }).join("");
-  if(allDone) html+=`<div class="all-done-card"><div style="font-size:40px">🏆</div><div class="ad-title">Perfect Day!</div><div class="ad-sub">75kg is getting closer. Keep it up!</div></div>`;
-  const el=document.getElementById("view-today");if(el) el.innerHTML=html;
 }
 
 function renderHistory(){
   const tk=todayKey();
   const days=Object.entries(allData).filter(([k])=>k!==tk).sort(([a],[b])=>b.localeCompare(a)).slice(0,30);
-  if(!days.length){document.getElementById("view-history").innerHTML=`<div class="empty">No history yet — complete today first! 💪</div>`;return;}
-  document.getElementById("view-history").innerHTML=days.map(([key,data])=>{
-    const done=ROUTINES.filter(r=>data[r.id]).length,pct=Math.round((done/ROUTINES.length)*100);
-    const d=new Date(key+"T00:00:00"),lbl=d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
-    const bc=pct===100?"#34d399":pct>=50?"#f97316":"#ff4444",bb=pct===100?"#34d39920":pct>=50?"#f9731620":"#ff444415";
-    const wtxt=data.weight?`⚖️ ${data.weight} kg`:"";
+  const el=document.getElementById("view-history"); if(!el) return;
+  if(!days.length){el.innerHTML=`<div class="empty">No history yet — complete today first! 💪</div>`;return;}
+  el.innerHTML=days.map(([key,data])=>{
+    const done=ROUTINES.filter(r=>data[r.id]).length, pct=Math.round((done/ROUTINES.length)*100);
+    const d=new Date(key+"T00:00:00"), lbl=d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+    const bc=pct===100?"#34d399":pct>=50?"#f97316":"#ff4444", bb=pct===100?"#34d39920":pct>=50?"#f9731620":"#ff444415";
     return `<div class="hist-card">
       <div class="hist-row">
-        <div>
-          <div class="hist-date">${lbl}</div>
-          ${wtxt?`<div class="hist-weight">${wtxt}</div>`:""}
-        </div>
+        <div><div class="hist-date">${lbl}</div>${data.weight?`<div class="hist-weight">⚖️ ${data.weight} kg</div>`:""}</div>
         <div class="hist-badge" style="color:${bc};background:${bb}">${done}/${ROUTINES.length}${pct===100?" 🏆":""}</div>
       </div>
       <div class="hist-emojis">${ROUTINES.map(r=>`<span style="font-size:20px;opacity:${data[r.id]?1:.2};filter:${data[r.id]?"none":"grayscale(1)"}">${r.emoji}</span>`).join("")}</div>
@@ -560,8 +560,7 @@ window.switchTab=function(tab){
   if(tab==="history") renderHistory();
 };
 
-// ── Boot ──
-setInterval(updateHeader,60000);
+setInterval(updateHeader, 60000);
 </script>
 </body>
 </html>
